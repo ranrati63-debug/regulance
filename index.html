@@ -171,6 +171,11 @@ footer{background:var(--charcoal);color:#aab;padding:40px 20px 16px}
 .offer-arrow{color:var(--primary-orange);font-size:18px;font-weight:700}
 
 @media (min-width:769px){.nav-links{align-self:stretch;align-items:stretch}.nav-links a{display:flex;align-items:center}}
+.nav-toggle{display:none;width:44px;height:44px;border:1.5px solid rgba(8,47,102,.2);border-radius:10px;background:#fff;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+.nav-toggle span{display:block;width:20px;height:2.5px;background:var(--primary-navy);border-radius:2px;transition:all .25s}
+nav.open .nav-toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+nav.open .nav-toggle span:nth-child(2){opacity:0}
+nav.open .nav-toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 /* ========== MEGA MENU ========== */
 .mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:3px solid var(--primary-orange);box-shadow:0 18px 40px rgba(8,47,102,.18);padding:22px 28px 26px;display:none;grid-template-columns:repeat(3,1fr);gap:10px 40px;z-index:200;max-height:80vh;overflow-y:auto;animation:rgIn .2s ease}
 .mega.open{display:grid}
@@ -289,6 +294,23 @@ footer{padding:30px 12px 12px}
 .offer-arrow{display:none}
 .offer-logo-item{text-align:center}
 .offer-logo-item.all{grid-column:1/-1}
+.topbar{flex-direction:row;justify-content:center;padding:6px 10px;font-size:11px}
+.topbar-right{display:none}
+nav{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0 12px}
+.logo{padding:8px 0;gap:8px}
+.logo-sub{font-size:7.5px;letter-spacing:.5px}
+.nav-toggle{display:flex}
+.nav-links{display:none;width:100%;order:3;flex-direction:column;flex-wrap:nowrap;overflow:visible;border-top:1px solid rgba(8,47,102,.12)}
+.nav-btn{display:none;order:4}
+nav.open{max-height:100vh;overflow-y:auto}
+nav.open .nav-links{display:flex}
+nav.open .nav-btn{display:block;width:100%;text-align:center;margin:10px 0 14px;padding:12px 14px;font-size:14px;border-radius:8px}
+.nav-links a{display:flex;align-items:center;justify-content:space-between;padding:14px 6px;font-size:14px;border-bottom:1px solid rgba(8,47,102,.1);white-space:normal}
+.nav-links a.active{color:var(--primary-orange);border-bottom-color:rgba(8,47,102,.1)}
+.mega{position:static;box-shadow:none;border-top:0;background:#fbf8ef;padding:6px 10px 12px;max-height:none;overflow:visible;animation:none;border-radius:0 0 10px 10px}
+.mega-col h5{font-size:13px;margin:8px 0 4px}
+.mega-col a{font-size:14px;padding:10px 8px 10px 30px;border-bottom:0}
+.mega-col a::after{display:none}
 .rg-head{padding:18px 18px 14px}
 .rg-form{padding:16px 18px 20px}
 }
@@ -352,6 +374,7 @@ footer{padding:30px 12px 12px}
       <div class="logo-sub">LEGAL & COMPANY REGISTRATIONS</div>
     </div>
   </div>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="#" data-menu="company">Company Registration ▾</a>
     <a href="#" data-menu="trademark">Trademark ▾</a>
@@ -920,6 +943,12 @@ footer{padding:30px 12px 12px}
   function closeAll(){Object.keys(panels).forEach(function(k){panels[k].classList.remove('open')});links.forEach(function(a){a.classList.remove('active')})}
   function show(k){closeAll();if(panels[k]){panels[k].classList.add('open');document.querySelector('.nav-links a[data-menu="'+k+'"]').classList.add('active')}}
   function isDesk(){return window.innerWidth>768}
+  function place(){Object.keys(panels).forEach(function(k){var a=document.querySelector('.nav-links a[data-menu="'+k+'"]');if(isDesk())nav.appendChild(panels[k]);else a.insertAdjacentElement('afterend',panels[k])})}
+  place();
+  window.addEventListener('resize',function(){place();if(isDesk()){nav.classList.remove('open');closeAll()}});
+  var tg=document.getElementById('navToggle');
+  tg.addEventListener('click',function(e){e.stopPropagation();var o=nav.classList.toggle('open');tg.setAttribute('aria-expanded',o);tg.setAttribute('aria-label',o?'Close menu':'Open menu');if(!o)closeAll()});
+  document.querySelector('.nav-btn').addEventListener('click',function(){nav.classList.remove('open');closeAll()});
   function hoverOut(){clearTimeout(timer);timer=setTimeout(closeAll,300)}
   links.forEach(function(a){
     var k=a.getAttribute('data-menu');
@@ -931,10 +960,10 @@ footer{padding:30px 12px 12px}
     p.addEventListener('mouseenter',function(){clearTimeout(timer)});p.addEventListener('mouseleave',function(){if(isDesk())hoverOut()});
     p.addEventListener('click',function(e){
       var a=e.target.closest('a[data-svc]');if(!a)return;
-      e.preventDefault();closeAll();window.rgOpen&&window.rgOpen(a.getAttribute('data-svc'));
+      e.preventDefault();closeAll();nav.classList.remove('open');window.rgOpen&&window.rgOpen(a.getAttribute('data-svc'));
     });
   });
-  document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll()});
+  document.addEventListener('click',function(e){if(!nav.contains(e.target)){closeAll();nav.classList.remove('open')}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
 })();
 </script>
