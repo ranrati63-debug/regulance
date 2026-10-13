@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulens - Legal & Company Registrations</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--primary-orange:#F86611;--primary-navy:#082F66;--primary-green:#0EB176;--light-green:#7BC681;--charcoal:#060606;--warm-cream:#E8E5D5;--gold:#F86611;--gold-light:#f97a2e;--dark:#082F66;--navy:#0a3a7a;--orange:#F86611;--green:#0EB176;--white:#fff;--gray:#f0ede4;--text:#1a1a1a;--muted:#5a5a5a;--card-shadow:0 4px 24px rgba(8,47,102,.12);--card-hover-shadow:0 12px 48px rgba(8,47,102,.2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;max-width:100%}
+img,svg{max-width:100%}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff}
+/* TOP BAR */
+.topbar{background:var(--charcoal);color:#ccc;font-size:12px;padding:6px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:#ccc;text-decoration:none;margin-left:12px}
+.topbar a:hover{color:var(--primary-orange)}
+.topbar-right{display:flex;flex-wrap:wrap;gap:4px}
+/* NAV */
+nav{background:var(--warm-cream);border-bottom:3px solid var(--primary-orange);padding:0 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(8,47,102,.08);flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;padding:10px 0}
+.logo-icon{width:55px;height:55px;border-radius:8px;object-fit:cover}
+.logo-text{font-family:'Playfair Display',serif;font-size:16px;color:var(--primary-navy);line-height:1.2}
+.logo-text span{color:var(--primary-orange)}
+.logo-sub{font-size:9px;color:var(--muted);letter-spacing:1px}
+.nav-links{display:flex;gap:0;flex-wrap:wrap}
+.nav-links a{display:block;padding:14px 10px;font-size:11.5px;font-weight:500;color:var(--text);text-decoration:none;border-bottom:3px solid transparent;transition:all .2s}
+.nav-links a:hover{color:var(--primary-orange);border-bottom-color:var(--primary-orange)}
+.nav-btn{background:var(--primary-orange);color:#fff;padding:8px 16px;border-radius:4px;font-size:12px;font-weight:600;text-decoration:none;margin:8px 0;transition:background .2s}
+.nav-btn:hover{background:var(--primary-navy)}
+/* HERO */
+.hero{background:linear-gradient(135deg,rgba(8,47,102,.92) 0%,rgba(8,47,102,.85) 60%,rgba(6,6,6,.8) 100%),url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80');background-size:cover;background-position:center;padding:0 20px;min-height:380px;display:flex;align-items:center;position:relative;overflow:hidden;flex-wrap:wrap}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(248,102,17,.12) 0%,transparent 70%)}
+.hero-left{flex:1;padding:40px 0;z-index:2;min-width:280px}
+.hero-badge{display:inline-block;background:var(--primary-orange);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:20px;margin-bottom:12px;text-transform:uppercase}
+.hero h1{font-family:'Playfair Display',serif;font-size:30px;color:#fff;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--primary-orange)}
+.hero-services{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:14px}
+.hero-service{display:flex;align-items:center;gap:6px;color:#dde;font-size:12px}
+.hero-service::before{content:'✓';color:var(--primary-orange);font-weight:700;font-size:13px}
+.hero-right{width:280px;display:flex;align-items:center;justify-content:center;z-index:2}
+.hero-right svg{width:200px;height:200px}
+/* RATING BAR */
+.rating-bar{background:var(--primary-green);padding:10px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center}
+.rating-item{display:flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:600}
+/* SECTION */
+.section{padding:40px 20px}
+.section-title{font-family:'Playfair Display',serif;font-size:26px;text-align:center;color:var(--primary-navy);margin-bottom:6px}
+.section-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:30px}
+.divider{width:50px;height:3px;background:var(--primary-orange);margin:10px auto 24px;border-radius:2px}
+/* ABOUT */
+.about{background:var(--warm-cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.about-text p{font-size:13.5px;line-height:1.8;color:var(--muted);margin-bottom:12px}
+.about-highlight{background:linear-gradient(135deg,var(--primary-navy),var(--charcoal));color:#fff;padding:20px 24px;border-radius:12px;font-size:13px;line-height:1.7;border-left:4px solid var(--primary-orange)}
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.service-card{background:#fff;border:1px solid #e8e5d5;border-radius:14px;padding:0;text-align:center;transition:all .3s;cursor:pointer;overflow:hidden;display:flex;flex-direction:column;height:100%;min-height:350px;box-shadow:var(--card-shadow)}
+.service-card:hover{box-shadow:var(--card-hover-shadow);transform:translateY(-6px);border-color:var(--primary-orange)}
+.service-card .card-image{width:100%;height:200px;object-fit:cover;display:block;border-bottom:3px solid var(--primary-orange)}
+.service-card .card-body{padding:14px 14px 18px;flex:1;display:flex;flex-direction:column;background:#fff}
+.service-card h4{font-size:13px;font-weight:700;color:var(--primary-navy);margin-bottom:4px;line-height:1.3;min-height:34px}
+.service-card p{font-size:11px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:8px}
+.service-link{display:inline-block;margin-top:auto;font-size:11px;color:var(--primary-orange);font-weight:700;text-decoration:none;padding:4px 0;transition:color .2s}
+.service-link:hover{color:var(--primary-navy);text-decoration:underline}
+/* EXPERTISE */
+.expertise{background:linear-gradient(135deg,var(--primary-navy),var(--charcoal));padding:40px 20px}
+.expertise .section-title{color:#fff}
+.expertise-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.exp-card{background:rgba(255,255,255,.07);border:1px solid rgba(248,102,17,.3);border-radius:12px;padding:20px;display:flex;align-items:center;gap:14px;transition:all .3s}
+.exp-card:hover{background:rgba(248,102,17,.12);border-color:var(--primary-orange)}
+.exp-icon{width:48px;height:48px;flex-shrink:0}
+.exp-card h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.exp-card p{font-size:11px;color:#aab;line-height:1.5}
+/* TESTIMONIALS */
+.testimonials{background:linear-gradient(160deg,var(--warm-cream) 0%,#f5f2e8 100%);padding:50px 20px;overflow:hidden;position:relative}
+.testimonials .section-title{color:var(--primary-navy)}
+.testimonial-carousel{position:relative;max-width:1100px;margin:0 auto;overflow:hidden}
+.testimonial-track{display:flex;transition:transform .6s cubic-bezier(.25,.46,.45,.94);gap:0}
+.testimonial-slide{min-width:100%;padding:0 10px;flex-shrink:0;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.testimonial-card{background:#fff;border-radius:16px;padding:28px 30px;box-shadow:0 8px 40px rgba(8,47,102,.08),0 2px 12px rgba(8,47,102,.04);border:1px solid rgba(232,229,213,.5);min-height:200px;display:flex;flex-direction:column;position:relative;transition:all .3s;width:calc(50% - 12px);max-width:480px;flex:0 0 calc(50% - 12px)}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary-orange),var(--primary-green));border-radius:16px 16px 0 0}
+.testimonial-card:hover{box-shadow:0 12px 48px rgba(8,47,102,.12);transform:translateY(-2px)}
+.testimonial-stars{color:var(--primary-orange);font-size:16px;letter-spacing:3px;margin-bottom:10px}
+.testimonial-text{font-size:14px;line-height:1.8;color:var(--text);font-style:italic;margin-bottom:14px;font-weight:400;position:relative;padding-left:16px}
+.testimonial-text::before{content:'"';position:absolute;left:-4px;top:-6px;color:var(--primary-orange);font-size:28px;font-weight:700;font-family:'Playfair Display',serif;opacity:.3}
+.testimonial-author{display:flex;align-items:center;gap:12px;margin-top:2px;border-top:1px solid rgba(232,229,213,.6);padding-top:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary-orange),var(--primary-green));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;font-weight:700;font-family:'Playfair Display',serif;flex-shrink:0;box-shadow:0 4px 12px rgba(248,102,17,.2)}
+.testimonial-author-info{flex:1}
+.testimonial-name{font-weight:700;font-size:14px;color:var(--primary-navy)}
+.testimonial-designation{font-size:12px;color:var(--muted);font-weight:400}
+.testimonial-location{font-size:11px;color:var(--primary-orange);font-weight:600;display:flex;align-items:center;gap:4px}
+.testimonial-location::before{content:'📍';font-size:11px}
+.testimonial-quote-icon{position:absolute;bottom:16px;right:24px;font-size:40px;color:var(--primary-orange);opacity:.06;font-family:'Playfair Display',serif;line-height:1;pointer-events:none}
+.carousel-controls{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:30px}
+.carousel-btn{background:var(--white);color:var(--primary-navy);border:2px solid rgba(8,47,102,.15);width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.carousel-btn:hover{background:var(--primary-orange);color:#fff;border-color:var(--primary-orange);transform:scale(1.05);box-shadow:0 6px 20px rgba(248,102,17,.3)}
+.carousel-dots{display:flex;gap:8px}
+.carousel-dot{width:10px;height:10px;border-radius:50%;background:rgba(8,47,102,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
+.carousel-dot.active{background:var(--primary-orange);transform:scale(1.2);box-shadow:0 2px 8px rgba(248,102,17,.3)}
+/* WHY US */
+.why{background:var(--charcoal);padding:40px 20px}
+.why .section-title{color:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.why-item{background:var(--primary-orange);clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);padding:16px 18px;text-align:center}
+.why-item.alt{background:var(--primary-green)}
+.why-item h4{font-size:12px;font-weight:700;color:#fff;line-height:1.3}
+/* FOOTER */
+footer{background:var(--charcoal);color:#aab;padding:40px 20px 16px}
+.footer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-bottom:30px}
+.footer-col h5{color:#fff;font-size:12px;font-weight:700;margin-bottom:12px;letter-spacing:.5px}
+.footer-col a{display:block;font-size:11px;color:#889;text-decoration:none;margin-bottom:5px;transition:color .2s}
+.footer-col a:hover{color:var(--primary-orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;font-size:10.5px;text-align:center;color:#667}
+.social-icons{display:flex;gap:10px;margin-top:12px}
+.social-icon{width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#ccc;text-decoration:none;font-size:11px;transition:background .2s}
+.social-icon:hover{background:var(--primary-orange);color:#fff}
+/* DIGITAL */
+.digital-section{background:linear-gradient(160deg,var(--charcoal) 0%,var(--primary-navy) 40%,#0a1a3a 100%);padding:50px 20px;position:relative;overflow:hidden}
+.digital-section::before{content:'';position:absolute;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(248,102,17,.06) 0%,transparent 70%);border-radius:50%}
+.digital-section::after{content:'';position:absolute;bottom:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(14,177,118,.06) 0%,transparent 70%);border-radius:50%}
+.digital-header{text-align:center;margin-bottom:40px}
+.digital-badge{display:inline-block;background:linear-gradient(90deg,var(--primary-orange),var(--primary-green));color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:20px;margin-bottom:12px;text-transform:uppercase}
+.digital-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
+.digital-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px 18px;transition:all .35s;position:relative;overflow:hidden}
+.digital-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(248,102,17,.06),transparent);opacity:0;transition:opacity .3s}
+.digital-card:hover{transform:translateY(-4px);border-color:rgba(248,102,17,.4);box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 30px rgba(248,102,17,.08)}
+.digital-card:hover::before{opacity:1}
+.featured-card{border-color:rgba(248,102,17,.5);background:rgba(248,102,17,.06)}
+.featured-ribbon{position:absolute;top:12px;right:12px;background:var(--primary-orange);color:#fff;font-size:9px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:.5px;z-index:2}
+.digital-card h3{font-family:'Playfair Display',serif;font-size:16px;color:#fff;margin-bottom:8px}
+.digital-card p{font-size:12px;color:#99a;line-height:1.6;margin-bottom:12px}
+.digital-list{list-style:none;margin-bottom:14px}
+.digital-list li{font-size:11px;color:#aab;padding:4px 0;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,.05)}
+.digital-list li::before{content:'→';color:var(--primary-orange);font-size:10px}
+.digital-card-img{position:relative;height:140px;border-radius:10px 10px 0 0;overflow:hidden;margin:-24px -18px 16px}
+.digital-card-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.7;transition:opacity .3s,transform .4s}
+.digital-card:hover .digital-card-img img{opacity:.85;transform:scale(1.04)}
+.digital-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.85) 0%,rgba(6,6,6,.2) 60%,transparent 100%);display:flex;align-items:flex-end;padding:12px}
+.digital-icon-wrap-sm{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4);flex-shrink:0}
+.digital-card-body{padding-top:2px}
+.digital-cta-btn{display:inline-block;margin-top:10px;background:transparent;border:1px solid rgba(248,102,17,.5);color:var(--primary-orange);font-size:11px;font-weight:600;padding:6px 16px;border-radius:20px;text-decoration:none;transition:all .25s;letter-spacing:.3px}
+.digital-cta-btn:hover{background:var(--primary-orange);border-color:var(--primary-orange);color:#fff}
+/* OFFER */
+.offer-img-strip{display:flex;gap:10px;margin-top:18px}
+.offer-img-strip img{width:calc(50% - 5px);height:100px;object-fit:cover;border-radius:10px;opacity:.85;border:1px solid rgba(248,102,17,.25)}
+.offer-starts{font-size:12px;color:var(--primary-orange);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.offer-section{background:linear-gradient(135deg,var(--charcoal) 0%,#0a1a2a 50%,#0a2a1a 100%);padding:50px 20px;position:relative;overflow:hidden}
+.offer-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(248,102,17,.12) 0%,transparent 70%);pointer-events:none}
+.offer-inner{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:center;position:relative;z-index:1;max-width:1100px;margin:0 auto}
+.offer-tag{display:inline-block;background:linear-gradient(90deg,var(--primary-orange),var(--primary-green));color:#fff;font-size:10px;font-weight:800;letter-spacing:2px;padding:6px 14px;border-radius:4px;margin-bottom:16px;text-transform:uppercase;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(248,102,17,.4)}50%{box-shadow:0 0 0 12px rgba(248,102,17,0)}}
+.offer-heading{font-family:'Playfair Display',serif;font-size:32px;color:#fff;line-height:1.2;margin-bottom:10px}
+.offer-heading .offer-plus{color:var(--primary-orange);font-size:36px}
+.offer-sub{font-size:14px;color:#99a;margin-bottom:22px;line-height:1.6}
+.offer-includes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.offer-include-item{font-size:12px;color:#ccc;display:flex;align-items:center;gap:4px}
+.offer-include-item::before{content:'✅';color:var(--primary-green);font-size:12px}
+.offer-price-card{background:linear-gradient(135deg,rgba(248,102,17,.12),rgba(14,177,118,.06));border:2px solid var(--primary-orange);border-radius:16px;padding:28px 24px;text-align:center;position:relative}
+.offer-price-card::before{content:'';position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(135deg,rgba(248,102,17,.2),transparent,rgba(14,177,118,.1));z-index:-1}
+.offer-was{font-size:12px;color:#99a;margin-bottom:6px}
+.offer-was s{color:#c88}
+.offer-price{font-size:48px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px;font-family:'Playfair Display',serif}
+.price-inr{font-size:28px;color:var(--primary-orange);vertical-align:top;margin-top:8px;display:inline-block}
+.offer-note{font-size:11px;color:#99a;margin-bottom:10px}
+.offer-saving{background:linear-gradient(90deg,var(--primary-orange),var(--primary-green));color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;display:inline-block;margin-bottom:14px}
+.offer-cta{display:block;background:linear-gradient(90deg,var(--primary-orange),var(--primary-green));color:#fff;font-size:14px;font-weight:700;padding:14px 24px;border-radius:10px;text-decoration:none;margin-bottom:10px;transition:all .3s;letter-spacing:.5px}
+.offer-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(248,102,17,.4)}
+.offer-urgency{font-size:10.5px;color:#99a}
+.offer-logos{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap;position:relative;z-index:1}
+.offer-logo-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 16px;font-size:12px;color:#ddd;font-weight:600}
+.offer-logo-item.all{background:linear-gradient(90deg,var(--primary-orange),var(--primary-green));border:none;color:#fff;font-size:13px;font-weight:800}
+.offer-arrow{color:var(--primary-orange);font-size:18px;font-weight:700}
+
+@media (min-width:769px){.nav-links{align-self:stretch;align-items:stretch}.nav-links a{display:flex;align-items:center}}
+/* ========== MEGA MENU ========== */
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:3px solid var(--primary-orange);box-shadow:0 18px 40px rgba(8,47,102,.18);padding:22px 28px 26px;display:none;grid-template-columns:repeat(3,1fr);gap:10px 40px;z-index:200;max-height:80vh;overflow-y:auto;animation:rgIn .2s ease}
+.mega.open{display:grid}
+.nav-links a.active{color:var(--primary-orange);border-bottom-color:var(--primary-orange)}
+.mega-col h5{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#1f5a9e;margin-bottom:10px}
+.mega-col h5 svg{width:22px;height:22px;flex-shrink:0}
+.mega-col a{display:block;font-size:14.5px;color:#222;text-decoration:none;padding:9px 12px 9px 30px;position:relative;transition:all .2s}
+.mega-col a::after{content:'';position:absolute;right:8px;top:50%;height:28px;transform:translateY(-50%);border-right:1px solid #f1d2bd;opacity:0;transition:opacity .2s}
+.mega-col a:nth-of-type(odd)::after{opacity:1}
+.mega-col a:hover{color:var(--primary-orange);background:#fff6f0;border-radius:6px}
+/* ========== POPUP ========== */
+.rg-overlay{position:fixed;inset:0;background:rgba(6,6,6,.7);display:none;align-items:center;justify-content:center;padding:16px;z-index:9999;backdrop-filter:blur(3px)}
+.rg-overlay.open{display:flex}
+.rg-modal{background:#fff;width:100%;max-width:440px;max-height:92vh;overflow-y:auto;border-radius:16px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:rgIn .25s ease}
+@keyframes rgIn{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.rg-head{background:linear-gradient(135deg,#082F66,#060606);color:#fff;padding:22px 24px 18px;border-radius:16px 16px 0 0;border-bottom:3px solid #F86611}
+.rg-head h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:4px}
+.rg-head p{font-size:12px;color:#bcc}
+.rg-close{position:absolute;top:10px;right:12px;width:32px;height:32px;border:none;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:20px;line-height:1;cursor:pointer}
+.rg-close:hover{background:#F86611}
+.rg-form{padding:20px 24px 24px}
+.rg-field{margin-bottom:14px}
+.rg-field label{display:block;font-size:12px;font-weight:600;color:#082F66;margin-bottom:5px}
+.rg-field label span{color:#F86611}
+.rg-field input,.rg-field select,.rg-field textarea{width:100%;padding:11px 12px;border:1.5px solid #ddd;border-radius:8px;font:inherit;font-size:16px;color:#1a1a1a;background:#fff;outline:none;transition:border-color .2s}
+.rg-field textarea{resize:vertical;min-height:80px}
+.rg-field input:focus,.rg-field select:focus,.rg-field textarea:focus{border-color:#F86611}
+.rg-field.err input,.rg-field.err select{border-color:#d93025}
+.rg-error{display:none;color:#d93025;font-size:11px;margin-top:4px}
+.rg-field.err .rg-error{display:block}
+.rg-submit{width:100%;background:#25D366;color:#fff;border:none;border-radius:10px;padding:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s}
+.rg-submit:hover{background:#1ebe5a;transform:translateY(-1px);box-shadow:0 8px 20px rgba(37,211,102,.35)}
+.rg-note{text-align:center;font-size:10.5px;color:#888;margin-top:10px}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width:1024px){
+.mega{grid-template-columns:repeat(2,1fr)}
+.services-grid{grid-template-columns:repeat(4,1fr);gap:16px}
+.service-card{min-height:320px}
+.service-card .card-image{height:170px}
+.about-grid{gap:24px}
+.footer-grid{grid-template-columns:repeat(3,1fr)}
+.digital-grid{grid-template-columns:repeat(2,1fr)}
+.offer-inner{grid-template-columns:1fr 300px;gap:30px}
+.testimonial-card{width:calc(50% - 10px);flex:0 0 calc(50% - 10px);padding:24px 22px}
+}
+@media (max-width:768px){
+.topbar{flex-direction:column;align-items:center;text-align:center;padding:6px 12px;font-size:11px}
+.topbar-right{justify-content:center}
+nav{padding:0 12px;flex-direction:column;align-items:center}
+.logo{padding:8px 0}
+.logo-icon{width:44px;height:44px}
+.logo-text{font-size:14px}
+.nav-links{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-top:1px solid rgba(8,47,102,.1)}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{padding:10px 8px;font-size:10px;white-space:nowrap;flex-shrink:0}
+.nav-btn{width:100%;text-align:center;margin:6px 0 10px;font-size:12px;padding:8px 14px}
+.hero{flex-direction:column;padding:0 12px;min-height:auto}
+.hero-left{padding:30px 0}
+.hero h1{font-size:24px}
+.hero-services{gap:4px}
+.hero-service{font-size:11px}
+.hero-badge{line-height:1.5}
+.hero-right{display:none}
+.rating-bar{gap:12px;padding:8px 12px;justify-content:space-around}
+.rating-item{font-size:10px}
+.rating-bar .rating-item:nth-child(even){display:none}
+.section{padding:30px 12px}
+.section-title{font-size:22px}
+.services-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+.service-card{min-height:300px}
+.service-card .card-image{height:150px}
+.service-card h4{font-size:12px;min-height:30px}
+.service-card p{font-size:10px}
+.about-grid{grid-template-columns:1fr;gap:20px}
+.about-text p{font-size:12.5px}
+.expertise-cards{grid-template-columns:1fr;gap:14px}
+.expertise{padding:30px 12px}
+.exp-card{padding:16px}
+.testimonial-slide{flex-direction:column;align-items:center;gap:14px}
+.testimonial-card{width:100%;flex:0 0 100%;max-width:100%;padding:20px 18px;min-height:auto}
+.testimonial-text{font-size:13px;padding-left:12px}
+.testimonial-text::before{font-size:22px;top:-4px}
+.testimonial-quote-icon{display:none}
+.testimonials{padding:30px 12px}
+.carousel-btn{width:38px;height:38px;font-size:16px}
+.carousel-controls{gap:14px;margin-top:20px}
+.why-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+.why{padding:30px 12px}
+.why-item{padding:14px 12px}
+.why-item h4{font-size:11px}
+.digital-grid{grid-template-columns:1fr;gap:16px}
+.digital-section{padding:30px 12px}
+.digital-card{padding:18px 14px}
+.digital-card-img{height:120px;margin:-18px -14px 12px}
+.offer-inner{grid-template-columns:1fr;gap:24px}
+.offer-section{padding:30px 12px}
+.offer-heading{font-size:26px}
+.offer-price{font-size:40px}
+.offer-include-item{font-size:11px}
+.offer-includes{gap:6px}
+.offer-price-card{padding:20px 16px}
+.offer-logos{gap:8px}
+.offer-logo-item{font-size:11px;padding:8px 12px}
+.footer-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+footer{padding:30px 12px 12px}
+.mega{padding:14px 16px 18px;grid-template-columns:1fr;gap:6px;max-height:65vh}
+.mega-col a{font-size:14px;padding:9px 10px 9px 28px}
+.rg-head{padding:18px 18px 14px}
+.rg-form{padding:16px 18px 20px}
+}
+@media (max-width:480px){
+.hero h1{font-size:20px}
+.hero-services{gap:3px}
+.hero-service{font-size:10px}
+.hero-badge{font-size:9px;padding:3px 10px}
+.services-grid{gap:10px}
+.service-card{min-height:280px}
+.service-card .card-image{height:130px}
+.service-card h4{font-size:11px;min-height:26px}
+.service-card p{font-size:9.5px}
+.service-link{font-size:10px}
+.testimonial-card{padding:16px 14px}
+.testimonial-text{font-size:12px;line-height:1.6}
+.testimonial-stars{font-size:14px}
+.testimonial-avatar{width:40px;height:40px;font-size:14px}
+.testimonial-name{font-size:13px}
+.testimonial-designation{font-size:11px}
+.why-grid{gap:8px}
+.why-item{padding:10px 8px}
+.why-item h4{font-size:10px}
+.footer-grid{gap:14px}
+.footer-col h5{font-size:11px}
+.footer-col a{font-size:10px}
+.offer-heading{font-size:22px}
+.offer-includes{grid-template-columns:1fr;gap:4px}
+.offer-price{font-size:34px}
+.price-inr{font-size:22px}
+.offer-price-card{padding:18px 12px}
+.digital-card h3{font-size:14px}
+.digital-card p{font-size:11px}
+.digital-list li{font-size:10px}
+.logo-text{font-size:12px}
+.logo-sub{font-size:7px}
+.logo-icon{width:38px;height:38px}
+.rg-overlay{align-items:flex-end;padding:0}
+.rg-modal{max-width:100%;border-radius:16px 16px 0 0}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>📞 +91-9999999999 &nbsp;|&nbsp; ✉ info@regulens.com</div>
+  <div class="topbar-right">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img class="logo-icon" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782310132/logo_leagal_website_ab1t1w.jpg" alt="Regulens Logo">
+    <div>
+      <div class="logo-text">Regulens</div>
+      <div class="logo-sub">LEGAL & COMPANY REGISTRATIONS</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" data-menu="company">Company Registration ▾</a>
+    <a href="#" data-menu="trademark">Trademark ▾</a>
+    <a href="#" data-menu="compliance">Compliance ▾</a>
+    <a href="#" data-menu="gst">GST ▾</a>
+    <a href="#" data-menu="tax">Tax ▾</a>
+    <a href="#" data-menu="legal">Legal ▾</a>
+    <a href="#" data-menu="odr">ODR ▾</a>
+    <a href="#" data-menu="hr">HR & Payroll ▾</a>
+  </div>
+  <a href="#" class="nav-btn">Get Started →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">🇮🇳 India's #1 Legal & Compliance Platform</div>
+    <h1>Business Registration,<br>Compliance, HR &<br><span>Legal Tech</span></h1>
+    <div class="hero-services">
+      <div class="hero-service">Company Registration</div>
+      <div class="hero-service">Business Compliance</div>
+      <div class="hero-service">Trademark</div>
+      <div class="hero-service">Tax & Accounting</div>
+      <div class="hero-service">ISO Certification</div>
+      <div class="hero-service">Licenses</div>
+      <div class="hero-service">GST Registration</div>
+      <div class="hero-service">HR & Payroll</div>
+      <div class="hero-service">Consumer Dispute</div>
+      <div class="hero-service">Other Legal Dispute (ODR)</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg viewBox="0 0 300 300" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#F86611" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#F86611" flood-opacity="0.3"/></filter>
+      </defs>
+      <circle cx="150" cy="150" r="140" fill="url(#bgGlow)"/>
+      <path d="M150 30 L230 65 L230 155 C230 200 195 235 150 252 C105 235 70 200 70 155 L70 65 Z" fill="#F86611" opacity="0.15" stroke="#F86611" stroke-width="2"/>
+      <path d="M150 45 L215 74 L215 155 C215 193 184 222 150 237 C116 222 85 193 85 155 L85 74 Z" fill="none" stroke="#F86611" stroke-width="1.5" opacity="0.6"/>
+      <line x1="150" y1="80" x2="150" y2="200" stroke="#F86611" stroke-width="3"/>
+      <line x1="100" y1="105" x2="200" y2="105" stroke="#F86611" stroke-width="3"/>
+      <line x1="100" y1="105" x2="90" y2="140" stroke="#F86611" stroke-width="2"/>
+      <line x1="100" y1="105" x2="110" y2="140" stroke="#F86611" stroke-width="2"/>
+      <path d="M86 140 Q100 148 114 140" stroke="#F86611" stroke-width="2" fill="none"/>
+      <line x1="200" y1="105" x2="190" y2="135" stroke="#F86611" stroke-width="2"/>
+      <line x1="200" y1="105" x2="210" y2="135" stroke="#F86611" stroke-width="2"/>
+      <path d="M186 135 Q200 143 214 135" stroke="#F86611" stroke-width="2" fill="none"/>
+      <rect x="125" y="196" width="50" height="32" rx="3" fill="#F86611" opacity="0.8"/>
+      <rect x="127" y="194" width="50" height="32" rx="3" fill="#0EB176"/>
+      <line x1="152" y1="194" x2="152" y2="226" stroke="#F86611" stroke-width="1"/>
+      <text x="150" y="78" text-anchor="middle" fill="#F86611" font-size="14">★</text>
+      <text x="90" y="100" text-anchor="middle" fill="#0EB176" font-size="10">✦</text>
+      <text x="210" y="100" text-anchor="middle" fill="#0EB176" font-size="10">✦</text>
+      <circle cx="150" cy="150" r="115" fill="none" stroke="#F86611" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
+      <text x="150" y="272" text-anchor="middle" fill="#F86611" font-size="11" font-weight="700" letter-spacing="2" font-family="sans-serif">TRUSTED LEGAL PARTNER</text>
+    </svg>
+  </div>
+</div>
+
+<!-- RATING BAR -->
+<div class="rating-bar">
+  <div class="rating-item"><span class="stars">★★★★★</span> Google Rating 4.8</div>
+  <div class="rating-item">|</div>
+  <div class="rating-item">🏆 10,000+ Businesses Served</div>
+  <div class="rating-item">|</div>
+  <div class="rating-item">⚖️ 500+ Legal Experts</div>
+  <div class="rating-item">|</div>
+  <div class="rating-item">🇮🇳 Serving All 28 States</div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about">
+  <div class="about-grid">
+    <div>
+      <h2 class="section-title" style="text-align:left;">About Us</h2>
+      <div class="divider" style="margin:10px 0 20px;"></div>
+      <div class="about-text">
+        <p>Regulens is a mission-driven, affordable Legal Services, HR, PR, org providing the best legal services for the Common Man since 2017.</p>
+        <p>We have a pool of industry professionals at different levels who'll provide solutions in all the multifaceted business verticals, consumer mind and others for the issues based on them or their Company life.</p>
+      </div>
+    </div>
+    <div class="about-highlight">
+      <strong style="color:var(--primary-orange);font-size:15px;">Regulens</strong> is India's 1st & only all-in-one platform, that provides business registration, licences, GST & tax, regulatory compliance, ODR-enabled legal support, audit, HR & payroll — all under one roof.
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <h2 class="section-title">Our Services</h2>
+  <div class="divider"></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311107/Trademark_logo_r3sqr0.jpg" alt="Trademark Registration" loading="lazy">
+      <div class="card-body"><h4>Trademark Registration Online</h4><p>Protect your brand with expert trademark registration across all classes.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311107/iso_cerified_logo_sxv8tk.png" alt="ISO Registration" loading="lazy">
+      <div class="card-body"><h4>ISO Registration</h4><p>Get ISO certified with our end-to-end support from documentation to audit.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311106/GST_logo_copy_rwsg34.jpg" alt="GST Registration" loading="lazy">
+      <div class="card-body"><h4>GST Registration Services</h4><p>Make your GST life simpler with our comprehensive support and guidance.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311106/certificate-of-incorporation_ycnjui.jpg" alt="Company Registration" loading="lazy">
+      <div class="card-body"><h4>Company Registration</h4><p>Get professionals to support business registration for companies in India.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311106/import_export_reg_x6e0pc.jpg" alt="Import Export Code" loading="lazy">
+      <div class="card-body"><h4>Import Export Code Registration</h4><p>Get an IEC from the Directorate General of Foreign Trade easily online.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311106/consumer_dispute_rghfbh.jpg" alt="Consumer Dispute" loading="lazy">
+      <div class="card-body"><h4>Consumer Dispute (NCDRC)</h4><p>The National Consumer Disputes Redressal Commission — quick and smart resolution.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311106/fassai_reg_logo_gajrcc.jpg" alt="FSSAI Registration" loading="lazy">
+      <div class="card-body"><h4>FSSAI Registration</h4><p>Online Empanelment of Consumer Complaints. Get Food safety certificate easily.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311107/online_employee_conflict_logo_aoovq3.png" alt="Employee Dispute Resolution" loading="lazy">
+      <div class="card-body"><h4>Online Employee Dispute Resolution</h4><p>Resolve disputes with our ODR-enabled professional legal services.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311105/cso_services_wkq0ab.png" alt="Virtual CSO Services" loading="lazy">
+      <div class="card-body"><h4>Virtual C&O Services</h4><p>Certificate of Incorporation &amp; Virtual CSO leadership for complex compliance.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+    <div class="service-card">
+      <img class="card-image" src="https://res.cloudinary.com/ddzovuctt/image/upload/v1782311525/certificate-of-incorporation_corporate_stttfa.jpg" alt="Corporates" loading="lazy">
+      <div class="card-body"><h4>Corporates</h4><p>Professional solutions for Companies and individuals under our corporate plans.</p><a href="#" class="service-link">Click Here →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise">
+  <h2 class="section-title">Experience Our Expertise</h2>
+  <div class="divider"></div>
+  <div class="expertise-cards">
+    <div class="exp-card">
+      <svg class="exp-icon" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27" fill="rgba(248,102,17,0.15)" stroke="#F86611" stroke-width="1.5"/>
+        <text x="28" y="22" text-anchor="middle" fill="#F86611" font-size="16" font-weight="700">™</text>
+        <line x1="14" y1="30" x2="42" y2="30" stroke="#F86611" stroke-width="1"/>
+        <text x="28" y="41" text-anchor="middle" fill="#F86611" font-size="8">TRADEMARK REG.</text>
+      </svg>
+      <div><h4>Trademark Registration</h4><p>Na karane ke NUKSAAN — Protect your brand before it's too late.</p></div>
+    </div>
+    <div class="exp-card">
+      <svg class="exp-icon" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27" fill="rgba(248,102,17,0.15)" stroke="#F86611" stroke-width="1.5"/>
+        <path d="M28 12 L40 18 L40 32 C40 40 34 45 28 47 C22 45 16 40 16 32 L16 18 Z" fill="none" stroke="#F86611" stroke-width="1.5"/>
+        <text x="28" y="31" text-anchor="middle" fill="#F86611" font-size="8" font-weight="700">COMPLETE REG.</text>
+        <text x="28" y="40" text-anchor="middle" fill="#F86611" font-size="7">&amp; COMPLIANCE</text>
+      </svg>
+      <div><h4>Complete Registration & Compliance</h4><p>End-to-end compliance solutions for your business growth.</p></div>
+    </div>
+    <div class="exp-card">
+      <svg class="exp-icon" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27" fill="rgba(248,102,17,0.15)" stroke="#F86611" stroke-width="1.5"/>
+        <rect x="14" y="22" width="28" height="16" rx="2" fill="none" stroke="#F86611" stroke-width="1.5"/>
+        <line x1="20" y1="28" x2="36" y2="28" stroke="#F86611" stroke-width="1"/>
+        <line x1="20" y1="32" x2="32" y2="32" stroke="#F86611" stroke-width="1"/>
+        <text x="28" y="47" text-anchor="middle" fill="#F86611" font-size="7">COMPLIANCE BUILDER</text>
+      </svg>
+      <div><h4>Complete Business Compliance Builder</h4><p>DIY and expert-assisted compliance for your entire business lifecycle.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="divider"></div>
+  <p class="section-sub" style="max-width:600px;margin:0 auto 24px;">Hear from our satisfied clients across Odisha who have trusted Regulens for their legal and compliance needs.</p>
+  <div class="testimonial-carousel">
+    <div class="testimonial-track" id="testimonialTrack">
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">Regulens made our company registration process incredibly smooth. Their team guided us through every step with patience and expertise. We were able to get our GST and IEC registration done within a week.</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">PS</div><div class="testimonial-author-info"><div class="testimonial-name">Prakash Satapathy</div><div class="testimonial-designation">Founder, Satapathy Enterprises</div><div class="testimonial-location">Bhubaneswar, Odisha</div></div></div>
+          <div class="testimonial-quote-icon">"</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">I approached Regulens for trademark registration of my food brand. Their team was professional and efficient. They handled all the documentation and followed up regularly. The entire process was hassle-free.</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">SM</div><div class="testimonial-author-info"><div class="testimonial-name">Smita Mohanty</div><div class="testimonial-designation">Owner, SpiceHub Foods</div><div class="testimonial-location">Cuttack, Odisha</div></div></div>
+          <div class="testimonial-quote-icon">"</div>
+        </div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">The ODR platform provided by Regulens helped us resolve a consumer dispute without going to court. Their mediation services are top-notch and saved us a lot of time and money.</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">RR</div><div class="testimonial-author-info"><div class="testimonial-name">Ramesh Rout</div><div class="testimonial-designation">Director, Rout Constructions</div><div class="testimonial-location">Puri, Odisha</div></div></div>
+          <div class="testimonial-quote-icon">"</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">We have been using Regulens for our annual compliance and tax filings for the past two years. Their team is reliable, responsive, and always up-to-date with the latest regulations.</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">BP</div><div class="testimonial-author-info"><div class="testimonial-name">Bibhuti Pradhan</div><div class="testimonial-designation">CEO, Pradhan Tech Solutions</div><div class="testimonial-location">Rourkela, Odisha</div></div></div>
+          <div class="testimonial-quote-icon">"</div>
+        </div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">As a small business owner, I was confused about which registration and licenses I needed. The Regulens team provided me with a complete business compliance package at an affordable price.</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">SD</div><div class="testimonial-author-info"><div class="testimonial-name">Suraj Das</div><div class="testimonial-designation">Proprietor, Das Trading Co.</div><div class="testimonial-location">Berhampur, Odisha</div></div></div>
+          <div class="testimonial-quote-icon">"</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">Regulens helped us get ISO certification for our manufacturing unit. Their documentation support and audit preparation guidance were excellent. We received our ISO 9001 certification within the promised timeline.</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">SN</div><div class="testimonial-author-info"><div class="testimonial-name">Sushanta Nayak</div><div class="testimonial-designation">Managing Director, Nayak Industries</div><div class="testimonial-location">Sambalpur, Odisha</div></div></div>
+          <div class="testimonial-quote-icon">"</div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">‹</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <h2 class="section-title">Why Us?</h2>
+  <div class="divider"></div>
+  <div class="why-grid">
+    <div class="why-item"><h4>Recognised by Govt. of India</h4></div>
+    <div class="why-item alt"><h4>1+ Lakh Happy Customers</h4></div>
+    <div class="why-item"><h4>ISO Certified</h4></div>
+    <div class="why-item alt"><h4>100% Secure</h4></div>
+    <div class="why-item alt"><h4>Trusted Experts</h4></div>
+    <div class="why-item"><h4>198 Free Services</h4></div>
+    <div class="why-item alt"><h4>Expert Local Service</h4></div>
+    <div class="why-item"><h4>Quick Response</h4></div>
+  </div>
+</section>
+
+<!-- DIGITAL SOLUTIONS -->
+<section class="digital-section">
+  <div class="digital-header">
+    <div class="digital-badge">🚀 New — Digital Services</div>
+    <h2 class="section-title" style="color:#fff;">All-in-One Business Solution</h2>
+    <div class="divider"></div>
+    <p class="section-sub" style="color:#aab;max-width:600px;margin:0 auto 30px;">Beyond legal — we power your entire business digitally. From brand identity to web presence to software, we build it all under one roof.</p>
+  </div>
+  <div class="digital-grid">
+    <div class="digital-card">
+      <div class="digital-card-img" style="background:linear-gradient(135deg,#1a2340,#0d3060);">
+        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&q=80" alt="Website Development" onerror="this.style.display='none'"/>
+        <div class="digital-img-overlay"><div class="digital-icon-wrap-sm" style="background:linear-gradient(135deg,#F86611,#f97a2e);">
+          <svg viewBox="0 0 48 48" width="22" height="22" fill="none"><rect x="4" y="10" width="40" height="28" rx="4" stroke="#fff" stroke-width="2.5"/><line x1="4" y1="18" x2="44" y2="18" stroke="#fff" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#fff"/><circle cx="16" cy="14" r="2" fill="#fff"/><circle cx="22" cy="14" r="2" fill="#fff"/><rect x="10" y="24" width="12" height="8" rx="2" fill="#fff" opacity="0.7"/><rect x="26" y="24" width="12" height="3" rx="1" fill="#fff" opacity="0.5"/><rect x="26" y="29" width="8" height="3" rx="1" fill="#fff" opacity="0.5"/></svg>
+        </div></div>
+      </div>
+      <div class="digital-card-body">
+        <h3>Website Development</h3>
+        <p>Professional, fast-loading websites — landing pages, eCommerce, portals, and custom web apps built to convert.</p>
+        <ul class="digital-list"><li>Static &amp; Dynamic Websites</li><li>eCommerce Stores</li><li>SEO-Optimised Code</li><li>Mobile Responsive</li></ul>
+        <a href="#" class="digital-cta-btn">Get a Quote →</a>
+      </div>
+    </div>
+    <div class="digital-card">
+      <div class="digital-card-img" style="background:linear-gradient(135deg,#2d1040,#5b0080);">
+        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&q=80" alt="Graphics Branding" onerror="this.style.display='none'"/>
+        <div class="digital-img-overlay"><div class="digital-icon-wrap-sm" style="background:linear-gradient(135deg,#7b1fa2,#ab47bc);">
+          <svg viewBox="0 0 48 48" width="22" height="22" fill="none"><circle cx="24" cy="24" r="10" stroke="#fff" stroke-width="2.5"/><path d="M24 14 L28 18 L24 22 L20 18 Z" fill="#fff" opacity="0.8"/><path d="M34 24 L30 28 L26 24 L30 20 Z" fill="#fff" opacity="0.8"/><path d="M24 34 L20 30 L24 26 L28 30 Z" fill="#fff" opacity="0.8"/><path d="M14 24 L18 20 L22 24 L18 28 Z" fill="#fff" opacity="0.8"/><circle cx="24" cy="24" r="4" fill="#fff"/></svg>
+        </div></div>
+      </div>
+      <div class="digital-card-body">
+        <h3>Graphics &amp; Branding</h3>
+        <p>Stunning visual identity that makes your brand unforgettable — logos, brochures, social media kits, and more.</p>
+        <ul class="digital-list"><li>Logo Design</li><li>Brand Identity Kit</li><li>Social Media Graphics</li><li>Brochures &amp; Flyers</li></ul>
+        <a href="#" class="digital-cta-btn">Get a Quote →</a>
+      </div>
+    </div>
+    <div class="digital-card featured-card">
+      <div class="featured-ribbon">⭐ Most Popular</div>
+      <div class="digital-card-img" style="background:linear-gradient(135deg,#1a1000,#3a2500);">
+        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=400&q=80" alt="Digital Marketing" onerror="this.style.display='none'"/>
+        <div class="digital-img-overlay"><div class="digital-icon-wrap-sm" style="background:linear-gradient(135deg,#F86611,#0EB176);">
+          <svg viewBox="0 0 48 48" width="22" height="22" fill="none"><polyline points="6,36 16,22 24,28 34,14 42,20" stroke="#fff" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="22" r="3" fill="#fff"/><circle cx="34" cy="14" r="3" fill="#fff"/><circle cx="42" cy="20" r="3" fill="#fff"/></svg>
+        </div></div>
+      </div>
+      <div class="digital-card-body">
+        <h3>Digital Marketing</h3>
+        <p>Get found online. We run result-driven campaigns across Google, Meta, Instagram, and LinkedIn to grow your revenue.</p>
+        <ul class="digital-list"><li>SEO &amp; Content Marketing</li><li>Google &amp; Meta Ads</li><li>Social Media Management</li><li>Email &amp; WhatsApp Campaigns</li></ul>
+        <a href="#" class="digital-cta-btn">Get a Quote →</a>
+      </div>
+    </div>
+    <div class="digital-card">
+      <div class="digital-card-img" style="background:linear-gradient(135deg,#001a20,#00404d);">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" alt="Mobile App Development" onerror="this.style.display='none'"/>
+        <div class="digital-img-overlay"><div class="digital-icon-wrap-sm" style="background:linear-gradient(135deg,#00838f,#26c6da);">
+          <svg viewBox="0 0 48 48" width="22" height="22" fill="none"><rect x="12" y="6" width="16" height="28" rx="3" stroke="#fff" stroke-width="2.5"/><rect x="20" y="12" width="16" height="24" rx="3" stroke="#fff" stroke-width="2" opacity="0.6"/><circle cx="20" cy="30" r="2" fill="#fff"/></svg>
+        </div></div>
+      </div>
+      <div class="digital-card-body">
+        <h3>Mobile App Development</h3>
+        <p>iOS &amp; Android apps built for performance — customer apps, business tools, on-demand platforms, and more.</p>
+        <ul class="digital-list"><li>Android &amp; iOS Apps</li><li>React Native Cross-Platform</li><li>UI/UX Design</li><li>App Store Submission</li></ul>
+        <a href="#" class="digital-cta-btn">Get a Quote →</a>
+      </div>
+    </div>
+    <div class="digital-card">
+      <div class="digital-card-img" style="background:linear-gradient(135deg,#001030,#003080);">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80" alt="Software Development" onerror="this.style.display='none'"/>
+        <div class="digital-img-overlay"><div class="digital-icon-wrap-sm" style="background:linear-gradient(135deg,#1565c0,#42a5f5);">
+          <svg viewBox="0 0 48 48" width="22" height="22" fill="none"><polyline points="14,20 8,24 14,28" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="34,20 40,24 34,28" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="28" y1="14" x2="20" y2="34" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div></div>
+      </div>
+      <div class="digital-card-body">
+        <h3>Software Development</h3>
+        <p>Custom ERP, CRM, billing systems, and SaaS products engineered to automate and scale your operations.</p>
+        <ul class="digital-list"><li>ERP &amp; CRM Systems</li><li>Billing &amp; Inventory Software</li><li>SaaS Product Development</li><li>API Integrations</li></ul>
+        <a href="#" class="digital-cta-btn">Get a Quote →</a>
+      </div>
+    </div>
+    <div class="digital-card">
+      <div class="digital-card-img" style="background:linear-gradient(135deg,#0a200a,#1a4a1a);">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Domain Hosting Email" onerror="this.style.display='none'"/>
+        <div class="digital-img-overlay"><div class="digital-icon-wrap-sm" style="background:linear-gradient(135deg,#2e7d32,#66bb6a);">
+          <svg viewBox="0 0 48 48" width="22" height="22" fill="none"><circle cx="24" cy="24" r="16" stroke="#fff" stroke-width="2.5"/><path d="M24 8 C18 14 14 18 14 24 C14 30 18 34 24 40" stroke="#fff" stroke-width="1.5"/><path d="M24 8 C30 14 34 18 34 24 C34 30 30 34 24 40" stroke="#fff" stroke-width="1.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="#fff" stroke-width="1.5"/></svg>
+        </div></div>
+      </div>
+      <div class="digital-card-body">
+        <h3>Domain, Hosting &amp; Email</h3>
+        <p>Secure, lightning-fast hosting with custom domain and professional email setup — your digital foundation.</p>
+        <ul class="digital-list"><li>Domain Registration</li><li>Cloud Web Hosting</li><li>Business Email Setup</li><li>SSL Certificate</li></ul>
+        <a href="#" class="digital-cta-btn">Get a Quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL OFFER -->
+<section class="offer-section">
+  <div class="offer-glow"></div>
+  <div class="offer-inner">
+    <div class="offer-left">
+      <div class="offer-tag">🔥 LIMITED TIME COMBO OFFER</div>
+      <h2 class="offer-heading">Website <span class="offer-plus">+</span> Company Registration</h2>
+      <p class="offer-sub">Everything you need to launch your business — legally registered and live online. One package. Zero hassle.</p>
+      <div class="offer-includes">
+        <div class="offer-include-item">Company / LLP / OPC Registration</div>
+        <div class="offer-include-item">Professional Business Website (5 Pages)</div>
+        <div class="offer-include-item">Free Domain (1 Year)</div>
+        <div class="offer-include-item">Business Email Setup</div>
+        <div class="offer-include-item">GST Registration</div>
+        <div class="offer-include-item">Logo Design</div>
+        <div class="offer-include-item">SSL Certificate</div>
+        <div class="offer-include-item">1-Year Legal Support</div>
+      </div>
+      <div class="offer-img-strip">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=300&q=80" alt="Business Launch" onerror="this.style.display='none'"/>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="Legal Expert" onerror="this.style.display='none'"/>
+      </div>
+    </div>
+    <div class="offer-right">
+      <div class="offer-price-card">
+        <div class="offer-was">Market Price: <s>₹24,999</s></div>
+        <div class="offer-starts">Starts from</div>
+        <div class="offer-price"><span class="price-inr">₹</span>7,999</div>
+        <div class="offer-note">All Inclusive · No Hidden Charges</div>
+        <div class="offer-saving">You Save ₹17,000 🎉</div>
+        <a href="#" class="offer-cta">Claim This Offer →</a>
+        <div class="offer-urgency">⏳ Offer valid for limited businesses only</div>
+      </div>
+    </div>
+  </div>
+  <div class="offer-logos">
+    <div class="offer-logo-item">🌐 Website</div><div class="offer-arrow">+</div>
+    <div class="offer-logo-item">📋 Registration</div><div class="offer-arrow">+</div>
+    <div class="offer-logo-item">📧 Email</div><div class="offer-arrow">+</div>
+    <div class="offer-logo-item">🎨 Logo</div><div class="offer-arrow">+</div>
+    <div class="offer-logo-item">🔒 SSL</div><div class="offer-arrow">=</div>
+    <div class="offer-logo-item all">Starts from ₹7,999</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><h5>Business Registration</h5><a href="#">Private Limited Company</a><a href="#">Public Limited Company</a><a href="#">LLP Registration</a><a href="#">One Person Company</a><a href="#">Sole Proprietorship</a></div>
+    <div class="footer-col"><h5>Licences</h5><a href="#">FSSAI Registration</a><a href="#">GST Registration</a><a href="#">IEC Registration</a><a href="#">ISO Registration</a><a href="#">MSME Registration</a></div>
+    <div class="footer-col"><h5>Registration</h5><a href="#">Company Registration</a><a href="#">NGO Registration</a><a href="#">Trust Registration</a><a href="#">Section 8 Company</a><a href="#">Nidhi Company</a></div>
+    <div class="footer-col"><h5>GST</h5><a href="#">GST Registration</a><a href="#">GST Return Filing</a><a href="#">GST Annual Return</a><a href="#">GST Modification</a></div>
+    <div class="footer-col"><h5>Accounting & Tax</h5><a href="#">Income Tax Return</a><a href="#">TDS Return Filing</a><a href="#">Tax Audit</a><a href="#">Accounting Services</a>
+      <div class="social-icons"><a class="social-icon" href="#">f</a><a class="social-icon" href="#">in</a><a class="social-icon" href="#">t</a><a class="social-icon" href="#">yt</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Regulens is part of PrakHit Legal Services Pvt Ltd. All services are registered under the Companies Act, 2013.</p>
+    <p style="margin-top:6px;">© 2026 Regulens. All Rights Reserved. | Privacy Policy | Terms of Use | Refund Policy | Disclaimer</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP ENQUIRY POPUP -->
+<div class="rg-overlay" id="rgOverlay" aria-hidden="true">
+  <div class="rg-modal" role="dialog" aria-modal="true" aria-labelledby="rgTitle">
+    <button type="button" class="rg-close" id="rgClose" aria-label="Close">&times;</button>
+    <div class="rg-head">
+      <h3 id="rgTitle">Get a Free Consultation</h3>
+      <p>Fill in your details and we'll reply on WhatsApp.</p>
+    </div>
+    <form class="rg-form" id="rgForm" novalidate>
+      <div class="rg-field" id="rgFName">
+        <label for="rgName">Your Name <span>*</span></label>
+        <input type="text" id="rgName" placeholder="Enter your full name" autocomplete="name">
+        <div class="rg-error">Please enter your name.</div>
+      </div>
+      <div class="rg-field" id="rgFMobile">
+        <label for="rgMobile">Mobile Number <span>*</span></label>
+        <input type="tel" id="rgMobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" autocomplete="tel-national">
+        <div class="rg-error">Enter a valid 10-digit mobile number.</div>
+      </div>
+      <div class="rg-field" id="rgFRegard">
+        <label for="rgRegard">Regarding <span>*</span></label>
+        <select id="rgRegard"></select>
+        <div class="rg-error">Please select a service.</div>
+      </div>
+      <div class="rg-field">
+        <label for="rgMsg">Message (optional)</label>
+        <textarea id="rgMsg" placeholder="Tell us briefly what you need"></textarea>
+      </div>
+      <button type="submit" class="rg-submit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.4-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.2z"/></svg>
+        Send on WhatsApp
+      </button>
+      <div class="rg-note">🔒 Your details are only used to respond to your enquiry.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+// Testimonial Carousel
+(function(){
+  const track=document.getElementById('testimonialTrack');
+  const slides=track.querySelectorAll('.testimonial-slide');
+  const totalSlides=slides.length;
+  let currentIndex=0,autoPlayInterval;
+  const dotsContainer=document.getElementById('carouselDots');
+  for(let i=0;i<totalSlides;i++){
+    const dot=document.createElement('button');
+    dot.classList.add('carousel-dot');
+    if(i===0)dot.classList.add('active');
+    dot.addEventListener('click',()=>goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+  const dots=dotsContainer.querySelectorAll('.carousel-dot');
+  function goToSlide(index){
+    if(index<0)index=totalSlides-1;
+    if(index>=totalSlides)index=0;
+    currentIndex=index;
+    track.style.transform=`translateX(-${currentIndex*100}%)`;
+    dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
+  }
+  const nextSlide=()=>goToSlide(currentIndex+1);
+  const prevSlide=()=>goToSlide(currentIndex-1);
+  function stopAutoPlay(){if(autoPlayInterval){clearInterval(autoPlayInterval);autoPlayInterval=null}}
+  function startAutoPlay(){stopAutoPlay();autoPlayInterval=setInterval(nextSlide,5000)}
+  document.getElementById('nextBtn').addEventListener('click',()=>{nextSlide();startAutoPlay()});
+  document.getElementById('prevBtn').addEventListener('click',()=>{prevSlide();startAutoPlay()});
+  const carousel=document.querySelector('.testimonial-carousel');
+  carousel.addEventListener('mouseenter',stopAutoPlay);
+  carousel.addEventListener('mouseleave',startAutoPlay);
+  let sx=0;
+  carousel.addEventListener('touchstart',e=>{sx=e.changedTouches[0].screenX});
+  carousel.addEventListener('touchend',e=>{
+    const diff=sx-e.changedTouches[0].screenX;
+    if(Math.abs(diff)>50){diff>0?nextSlide():prevSlide();startAutoPlay()}
+  });
+  startAutoPlay();
+})();
+
+// WhatsApp enquiry popup
+(function(){
+  // ===== CHANGE THIS: country code + number, digits only =====
+  var WHATSAPP_NUMBER="919999999999";
+
+  var SERVICES=["Company Registration","Trademark Registration","ISO Registration","GST Registration","Import Export Code Registration","FSSAI Registration","Consumer Dispute (NCDRC)","Online Employee Dispute Resolution","Virtual C&O Services","Corporates","Website Development","Graphics & Branding","Digital Marketing","Mobile App Development","Software Development","Domain, Hosting & Email","Website + Company Registration Combo","Tax & Accounting","HR & Payroll","Other / General Enquiry"];
+
+  var overlay=document.getElementById('rgOverlay'),form=document.getElementById('rgForm'),sel=document.getElementById('rgRegard'),nameEl=document.getElementById('rgName'),mobEl=document.getElementById('rgMobile'),msgEl=document.getElementById('rgMsg');
+
+  sel.innerHTML='<option value="">-- Select a service --</option>'+SERVICES.map(function(s){return '<option>'+s.replace(/&/g,'&amp;')+'</option>'}).join('');
+
+  function setRegarding(text){
+    if(!text){sel.value='';return}
+    var clean=text.replace(/\s+/g,' ').trim(),found=false;
+    Array.prototype.forEach.call(sel.options,function(o){if(o.text===clean)found=true});
+    if(!found){var o=document.createElement('option');o.text=clean;sel.add(o)}
+    sel.value=clean;
+  }
+  function openModal(regarding){
+    form.querySelectorAll('.rg-field').forEach(function(f){f.classList.remove('err')});
+    setRegarding(regarding);
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    setTimeout(function(){nameEl.focus()},100);
+  }
+  window.rgOpen=openModal;
+  function closeModal(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  function regardingFor(btn){
+    var card=btn.closest('.service-card'),dcard=btn.closest('.digital-card');
+    if(card)return card.querySelector('h4').textContent;
+    if(dcard)return dcard.querySelector('h3').textContent;
+    if(btn.classList.contains('offer-cta'))return 'Website + Company Registration Combo';
+    return '';
+  }
+  document.querySelectorAll('.nav-btn, .service-link, .digital-cta-btn, .offer-cta').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();openModal(regardingFor(b))});
+  });
+  document.getElementById('rgClose').addEventListener('click',closeModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+  mobEl.addEventListener('input',function(){mobEl.value=mobEl.value.replace(/\D/g,'').slice(0,10)});
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=nameEl.value.trim(),mob=mobEl.value.trim(),reg=sel.value,msg=msgEl.value.trim(),ok=true;
+    function flag(id,bad){document.getElementById(id).classList.toggle('err',bad);if(bad)ok=false}
+    flag('rgFName',name.length<2);
+    flag('rgFMobile',!/^[6-9]\d{9}$/.test(mob));
+    flag('rgFRegard',!reg);
+    if(!ok)return;
+    var text="Hello Regulens,\n\n*Name:* "+name+"\n*Mobile:* +91 "+mob+"\n*Regarding:* "+reg+"\n"+(msg?"*Message:* "+msg+"\n":"")+"\nPlease contact me. Thank you.";
+    window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(text),"_blank");
+    form.reset();
+    closeModal();
+  });
+})();
+
+// Mega menu
+(function(){
+  var PIE='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#3a9a45"/><path d="M12 12V1a11 11 0 0 1 11 11z" fill="#fff" opacity=".9"/><path d="M12 12V1" stroke="#3a9a45" stroke-width="1"/></svg>';
+  var MENUS={
+    company:[["Company Types",["Private Limited Company","Public Limited Company","LLP Registration","One Person Company","Sole Proprietorship","Partnership Firm"]],["Other Registrations",["Section 8 Company","Nidhi Company","NGO Registration","Trust Registration","Producer Company","Startup India Registration"]],["Business Licences",["MSME Registration","FSSAI Registration","IEC Registration","Shop & Establishment","Digital Signature (DSC)"]]],
+    trademark:[["Registration",["Trademark Registration","Trademark Search","Logo Trademark","Trademark Objection Reply"]],["Post-Filing",["Trademark Renewal","Trademark Assignment","Trademark Opposition","Trademark Hearing"]],["Other IP",["Copyright Registration","Patent Registration","Design Registration"]]],
+    compliance:[["Annual Compliances",["ROC Annual Filing","LLP Annual Filing","Director KYC (DIR-3)","Statutory Audit","Annual Return Filing"]],["Company Changes",["Change of Registered Office","Director Change","Share Transfer","Increase Authorised Capital","Company Name Change"]],["Closure & Others",["Company Closure","LLP Closure","ISO Registration","Virtual C&O Services"]]],
+    gst:[["GST",["GST Registration","GST Return Filing","GST Modification","GSTR-9 Annual Filing","GST LUT Filing","GST E-Way Bill"]],["Annual Compliances & Others",["Annual Compliance & Filing","Annual Compliance & Bookkeeping","Tax Planning & Consultancy","Tax & Compliance","Online Bookkeeping","12A-80G-CSR","Project Report"]],["Payroll Compliance",["PF-ESIC Registration","PF-ESIC Return Filing","ESIC Registration"]]],
+    tax:[["Income Tax",["Income Tax Return Filing","Tax Audit","Tax Planning & Consultancy","Income Tax Notice Reply"]],["TDS & Accounting",["TDS Return Filing","TAN Registration","Accounting Services","Online Bookkeeping"]],["Other Tax Services",["PAN Application","Professional Tax Registration","12A-80G-CSR"]]],
+    legal:[["Agreements",["Rental Agreement","Partnership Deed","MOU / Agreement Drafting","Legal Notice"]],["Disputes",["Consumer Dispute (NCDRC)","Cheque Bounce Case","Legal Consultation"]],["Property & Documents",["Property Document Verification","Will Drafting","Affidavit Drafting"]]],
+    odr:[["Online Dispute Resolution",["Consumer Dispute (NCDRC)","Online Employee Dispute Resolution","Online Mediation","Online Arbitration"]],["Business Disputes",["Business Dispute Resolution","Cheque Bounce Case","Recovery Notice"]]],
+    hr:[["Payroll",["Payroll Processing","PF-ESIC Registration","PF-ESIC Return Filing","ESIC Registration"]],["HR Services",["HR Policy Drafting","Employment Agreement","Offer & Appointment Letters","Labour Law Compliance"]],["Employee Disputes",["Online Employee Dispute Resolution","Labour Law Compliance"]]]
+  };
+  var nav=document.querySelector('nav'),links=document.querySelectorAll('.nav-links a[data-menu]'),panels={},timer;
+  function esc(t){return t.replace(/&/g,'&amp;')}
+  links.forEach(function(a){
+    var k=a.getAttribute('data-menu'),d=MENUS[k];if(!d)return;
+    var p=document.createElement('div');p.className='mega';
+    p.innerHTML=d.map(function(c){return '<div class="mega-col"><h5>'+PIE+esc(c[0])+'</h5>'+c[1].map(function(l){return '<a href="#" data-svc="'+esc(l)+'">'+esc(l)+'</a>'}).join('')+'</div>'}).join('');
+    nav.appendChild(p);panels[k]=p;
+  });
+  function closeAll(){Object.keys(panels).forEach(function(k){panels[k].classList.remove('open')});links.forEach(function(a){a.classList.remove('active')})}
+  function show(k){closeAll();if(panels[k]){panels[k].classList.add('open');document.querySelector('.nav-links a[data-menu="'+k+'"]').classList.add('active')}}
+  function isDesk(){return window.innerWidth>768}
+  function hoverOut(){clearTimeout(timer);timer=setTimeout(closeAll,300)}
+  links.forEach(function(a){
+    var k=a.getAttribute('data-menu');
+    a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(isDesk()){show(k);return}panels[k]&&panels[k].classList.contains('open')?closeAll():show(k)});
+    a.addEventListener('mouseenter',function(){if(!isDesk())return;clearTimeout(timer);show(k)});a.addEventListener('mouseleave',function(){if(isDesk())hoverOut()});
+  });
+  Object.keys(panels).forEach(function(k){
+    var p=panels[k];
+    p.addEventListener('mouseenter',function(){clearTimeout(timer)});p.addEventListener('mouseleave',function(){if(isDesk())hoverOut()});
+    p.addEventListener('click',function(e){
+      var a=e.target.closest('a[data-svc]');if(!a)return;
+      e.preventDefault();closeAll();window.rgOpen&&window.rgOpen(a.getAttribute('data-svc'));
+    });
+  });
+  document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
+})();
+</script>
+
+</body>
+</html>
